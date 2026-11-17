@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lane Hound</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Lane Hound <span>Pupper vs. human, one course, two views</span></h1>
+    <div class="controls">
+      <button id="start" class="primary">Start <kbd>Space</kbd></button>
+      <button id="stop">Stop <kbd>Esc</kbd></button>
+      <label>Pace
+        <select id="preset"></select>
+      </label>
+      <label>Seed <input id="seed" type="number" value="1" min="1" max="99999"></label>
+      <label><input id="endless" type="checkbox"> Endless lives</label>
+      <label><input id="focus" type="checkbox"> Big Pupper view <kbd>F</kbd></label>
+    </div>
+  </header>
+
+  <main>
+    <section class="view" id="human-pane">
+      <canvas id="human-view"></canvas>
+    </section>
+    <section class="view" id="pupper-pane">
+      <canvas id="pupper-view"></canvas>
+    </section>
+
+    <aside>
+      <div class="card">
+        <h2>Pupper</h2>
+        <p id="link-status" class="status">not connected</p>
+        <p id="robot-status" class="detail">Keys <kbd>A</kbd> <kbd>D</kbd> <kbd>W</kbd> <kbd>S</kbd> play this view by hand.</p>
+        <div class="row">
+          <button id="stand">Stand up</button>
+          <button id="lie">Lie down</button>
+        </div>
+        <img id="pupper-eye" alt="What Pupper sees, with what it detected drawn on top">
+        <p class="detail">What Pupper sees: the game as its vision reads it.</p>
+      </div>
+      <div class="card">
+        <h2>Human</h2>
+        <p id="pose-status" class="status">webcam off</p>
+        <p class="detail">Keys <kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> always work.</p>
+        <div class="row">
+          <button id="camera">Use webcam</button>
+          <button id="calibrate" disabled>Calibrate</button>
+        </div>
+        <div class="webcam">
+          <video id="webcam" playsinline muted></video>
+          <canvas id="skeleton"></canvas>
+        </div>
+        <p class="detail">Step left or right to change lane, jump, squat. Jogging on the spot is the "do nothing" move.</p>
+      </div>
+    </aside>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

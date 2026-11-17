@@ -1,0 +1,40 @@
+# Where the sound comes out and where the ears are, on YOUR Pupper.
+#
+# Metres, in the body frame, with Pupper standing:
+#   x forward from the middle of the body, y to Pupper's left, z up from the floor.
+#
+# MEASURE THESE WITH A RULER after you clip the mics on. Everything Pupper
+# works out about the room is built on these numbers: 1 cm wrong here is about
+# 1 cm wrong in every wall, and a few degrees wrong in its direction.
+# The numbers below are placeholders for a Pupper v3 with the mics clipped on
+# magnetically at body-top height.
+#
+# The order of `mics` is the order of the channels in the recording:
+#   two:   the DJI receiver in Stereo mode puts transmitter 1 on the left
+#          channel (first) and transmitter 2 on the right channel (second).
+#   four:  transmitters 1-4 in Quadraphonic mode, in that order.
+# `python3 echo/mic_check.py --tap` tells you which channel is which mic.
+
+speaker: [0.10, 0.00, 0.18]     # the middle of the speaker grille
+
+# How high the ceiling is above the floor (m), or null if unknown / outdoors.
+# Two ears cannot tell "above" from "ahead", so the ceiling's echo is cut out
+# of what they hear. Four ears can tell, and ignore this.
+ceiling_m: 2.7
+
+modes:
+  # Mode 1: two DJI Mic 3 transmitters + the compact USB-C receiver.
+  # One ear on each side, as far apart as the body allows.
+  two:
+    mics:
+      - [left,  0.02,  0.10, 0.20]
+      - [right, 0.02, -0.10, 0.20]
+
+  # Mode 2: the main receiver + up to four transmitters (three also works:
+  # delete one line). Not all in one line: a corner each is ideal.
+  four:
+    mics:
+      - [front_left,   0.14,  0.08, 0.20]
+      - [front_right,  0.14, -0.08, 0.20]
+      - [back_left,   -0.14,  0.08, 0.20]
+      - [back_right,  -0.14, -0.08, 0.20]

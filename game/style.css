@@ -1,0 +1,99 @@
+:root {
+  --bg: #0b0e1a;
+  --panel: #141a2c;
+  --line: #2a3350;
+  --text: #e8ecf4;
+  --muted: #98a3bf;
+  --accent: #8a7dff;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+h1 { margin: 0; font-size: 18px; letter-spacing: 0.02em; }
+h1 span { margin-left: 10px; color: var(--muted); font-size: 13px; font-weight: 400; }
+h2 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.controls label { color: var(--muted); display: flex; align-items: center; gap: 6px; }
+
+button, select, input[type="number"] {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: 0.45; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #0b0e1a; font-weight: 700; }
+input[type="number"] { width: 76px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+kbd {
+  font: 11px ui-monospace, Menlo, monospace;
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  background: var(--bg);
+}
+button.primary kbd { color: #0b0e1a; background: transparent; border-color: rgba(11, 14, 26, 0.4); }
+
+main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.view { display: flex; align-items: center; justify-content: center; min-width: 0; flex: 1 1 0; }
+.view canvas { max-width: 100%; max-height: calc(100vh - 100px); height: auto; display: block; }
+
+/* For the robot's camera: its view as large as the window allows. */
+body.focus-pupper #human-pane { flex: 0 0 22%; }
+body.focus-pupper #pupper-pane { flex: 3 1 0; }
+
+aside { flex: 0 0 250px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.card .row { display: flex; gap: 8px; margin: 8px 0; }
+.status { margin: 0 0 4px; font-weight: 600; }
+.detail { margin: 0 0 6px; color: var(--muted); font-size: 12px; }
+
+#pupper-eye { width: 100%; aspect-ratio: 4 / 5; background: var(--bg); border-radius: 6px; display: block; margin-bottom: 6px; object-fit: contain; }
+
+.webcam { position: relative; background: var(--bg); border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3; margin-bottom: 6px; }
+.webcam video, .webcam canvas { position: absolute; inset: 0; width: 100%; height: 100%; transform: scaleX(-1); }
+
+@media (max-width: 900px) {
+  main { flex-wrap: wrap; }
+  .view { flex: 1 1 45%; }
+  aside { flex: 1 1 100%; flex-direction: row; }
+  .card { flex: 1; }
+}

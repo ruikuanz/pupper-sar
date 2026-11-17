@@ -1,0 +1,11 @@
+# A reference trick: the running walking policy (sar_walk) is fed this joint-offset
+# reference once, the same way the joystick's game mode triggers its jump. Only
+# policies trained with this reference can follow it; the default policy was.
+# The table is the one the game player uses too (pupper/references/jump.json).
+#
+# Off by default. To let Gemini jump on request, rename this file to trick.yaml.
+description: Jumps straight up in place and lands standing. Only when the user clearly asks for a jump, with clear space around the robot.
+type: reference
+reference: ../../../pupper/references/jump.json
+start_pose: standing
+end_pose: standing

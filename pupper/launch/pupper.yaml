@@ -1,0 +1,9 @@
+# Parameters for the mux pupper.launch.py adds when the platform's launch has none.
+
+# The joystick (/teleop_cmd_vel) outranks our servers (/llm_cmd_vel); a source
+# that goes quiet for 500 ms is dropped, so a crashed server cannot leave Pupper
+# walking.
+cmd_vel_mux:
+  ros__parameters:
+    deadband: 0.05
+    timeout_ms: 500

@@ -1,0 +1,11 @@
+# For the laptop (the simulated robot and the tests):
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+# On the Pupper: gemini/setup.sh installs the assistant's (echo/ needs sounddevice, below).
+numpy
+opencv-python-headless
+fastapi
+uvicorn[standard]
+pyyaml
+psutil        # gemini/server.py: battery, CPU temperature
+google-genai  # gemini/chat.py: talk to Gemini in text
+sounddevice   # echo/: the speaker and the DJI receiver (on the Pupper also: sudo apt install libportaudio2)

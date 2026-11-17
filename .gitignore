@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
+real/.chrome-profile/
+real/recordings/
+real/model.npz
+gemini/web/dist/

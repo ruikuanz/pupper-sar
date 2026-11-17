@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pupper by ear</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pupper by ear</h1>
+    <span id="ears" class="tag">…</span>
+    <span id="link" class="tag off">not connected</span>
+    <span id="state" class="tag">…</span>
+  </header>
+
+  <main>
+    <section class="map">
+      <canvas id="map" aria-label="The map Pupper is building. Click to send Pupper there."></canvas>
+      <ul class="legend">
+        <li><i class="swatch wall"></i>wall, heard from two spots</li>
+        <li><i class="swatch maybe"></i>heard once</li>
+        <li><i class="swatch corner"></i>corner or post</li>
+        <li><i class="swatch echo"></i>this look's echoes</li>
+        <li><i class="swatch room"></i>the room, if the walls run on</li>
+        <li id="truth-key" hidden><i class="swatch truth"></i>the real room and dog (simulation only)</li>
+      </ul>
+    </section>
+
+    <aside>
+      <div class="buttons">
+        <button id="stand">Stand up</button>
+        <button id="look">Look</button>
+        <button id="explore">Explore</button>
+        <button id="stop" class="stop">Stop</button>
+      </div>
+      <div class="buttons minor">
+        <button id="lie">Lie down</button>
+        <button id="forget">Clear map</button>
+        <button id="walk_test" title="Walk 1 m straight ahead without listening, to measure WALK_SCALE. Needs clear floor.">Walk 1 m</button>
+      </div>
+      <p id="message" class="message">…</p>
+      <p class="hint">Click the map to send Pupper there. It stops if this page closes.</p>
+      <ul id="problems" class="problems"></ul>
+
+      <h2>What each ear heard <span class="unit">last ping</span></h2>
+      <canvas id="profiles" aria-label="Each ear's echo profile against wall distance"></canvas>
+      <ul id="ear-key" class="legend"></ul>
+
+      <h2>Echoes <span class="unit">this look</span></h2>
+      <table id="echoes">
+        <thead><tr><th>distance</th><th>direction</th><th>strength</th></tr></thead>
+        <tbody></tbody>
+      </table>
+
+      <h2>Log</h2>
+      <pre id="log"></pre>
+    </aside>
+  </main>
+  <script src="map.js"></script>
+</body>
+</html>

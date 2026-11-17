@@ -1,0 +1,10 @@
+{
+  "name": "lane-hound-tests",
+  "private": true,
+  "type": "module",
+  "description": "Test-only dependencies: a canvas and a WebSocket for node, so the real game can run headless.",
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.53",
+    "ws": "^8.18.0"
+  }
+}
